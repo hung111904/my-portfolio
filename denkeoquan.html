@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đèn kéo quân</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      margin-top: 20px;
+    }
+    .lantern {
+      width: 300px;
+      height: 300px;
+      margin: 50px auto;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: spin 5s linear infinite;
+    }
+    .face {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-position: center;
+      border: 2px solid #fff;
+      border-radius: 8px;
+    }
+    /* 6 mặt quay quanh trục Y */
+    .face:nth-child(1) { transform: rotateY(0deg) translateZ(150px); background-image: url('images/img1.png'); }
+    .face:nth-child(2) { transform: rotateY(60deg) translateZ(150px); background-image: url('images/img2.jpg'); }
+    .face:nth-child(3) { transform: rotateY(120deg) translateZ(150px); background-image: url('images/img3.webp'); }
+    .face:nth-child(4) { transform: rotateY(180deg) translateZ(150px); background-image: url('images/img4.webp'); }
+    .face:nth-child(5) { transform: rotateY(240deg) translateZ(150px); background-image: url('images/img5.webp'); }
+    .face:nth-child(6) { transform: rotateY(300deg) translateZ(150px); background-image: url('images/img6.webp'); }
+
+    @keyframes spin {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Đèn kéo quân</h1>
+  <p>Đưa chuột vào một hình để dừng, rê ra để quay tiếp</p>
+  <div class="lantern" id="lantern">
+    <div class="face"></div>
+    <div class="face"></div>
+    <div class="face"></div>
+    <div class="face"></div>
+    <div class="face"></div>
+    <div class="face"></div>
+  </div>
+
+  <script>
+    const lantern = document.getElementById('lantern');
+    // Khi đưa chuột vào: dừng quay
+    lantern.addEventListener('mouseover', () => {
+      lantern.style.animationPlayState = 'paused';
+    });
+    // Khi rê chuột ra: quay tiếp
+    lantern.addEventListener('mouseout', () => {
+      lantern.style.animationPlayState = 'running';
+    });
+  </script>
+</body>
+</html>
